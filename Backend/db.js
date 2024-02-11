@@ -1,31 +1,30 @@
 //mongodb+srv://premtheja:Theja@1277@todo-app.kjkvwlc.mongodb.net/
 const mongoose = require('mongoose');
-const { boolean } = require('zod');
 
-const todoSchema = new mongoose.Schema({
-    title: {
-        type: String,
-        required: true
-    },
-    description: {
-        type: String,
-        required: true
-    },
-    completed: {
-        type: Boolean, // Define a field of type boolean
-        default: false // Optionally set a default value
-    }
+mongoose.connect("mongodb+srv://premthejapamula:Theja1277@cluster0.pd7rbti.mongodb.net/")
+   .then(() => {
+    console.log("Connected to MongoDB");
+}).catch((err) => {
+    console.error("Error connecting to MongoDB:", err);
 });
 
-// const updateSchema = new mongoose.Schema({
-//     id: {
-//         type: String,
-//         required: true
-//     }
-// });
 
-// Create a model based on the schema
+
+const todoSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,  // Make sure to mark it as required
+  },
+  completed: {
+    type: Boolean,
+    default: false,
+  },
+});
+
 const Todo = mongoose.model('Todo', todoSchema);
-//const Update = mongoose.model('Update', updateSchema); 
 
-module.exports =Todo
+module.exports = Todo;
